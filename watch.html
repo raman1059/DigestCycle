@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    </head>
+    <body ng-app="app">
+        <div ng-controller="DefaultController">
+            <input ng-model="MyInput"/>
+            <span id="output"></span>
+        </div>
+        <script>
+        var app = angular.module('app', []);
+        app.controller('DefaultController', function($scope){
+           $scope.$watch(function(scope){
+              return scope.MyInput;
+           }, function(newValue, oldValue){
+                document.getElementById('output').innerHTML = ['Old Value: ', oldValue, ' New Value: ',newValue].join('');
+           });
+
+           $scope.$digest();
+           $scope.$apply(function(){
+
+           });
+        });
+        </script>
+    </body>
+</html>
